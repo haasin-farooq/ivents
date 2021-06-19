@@ -12,10 +12,10 @@ import (
 type User struct {
 	gorm.Model
 	Email string `gorm:"type:varchar(100);unique_index" json:"email"`
-	FirstName string `gorm:"size:100;not null" json:"firstname"`
-	LastName string `gorm:"size:100;not null" json:"lastname"`
+	FirstName string `gorm:"size:100;not null" json:"first_name"`
+	LastName string `gorm:"size:100;not null" json:"last_name"`
 	Password string `gorm:"size:100;not null" json:"password"`
-	ProfileImage string `gorm:"size:255" json:"profileimage"`
+	ProfileImage string `gorm:"size:255" json:"profile_image"`
 }
 
 // HashPassword hashes password from user input
@@ -65,10 +65,10 @@ func (u *User) Validate(action string) error {
 		return nil
 	default:
 		if u.FirstName == "" {
-			return errors.New("firstname is required")
+			return errors.New("first_name is required")
 		}
 		if u.LastName == "" {
-			return errors.New("lastname is required")
+			return errors.New("last_name is required")
 		}
 		if u.Email == "" {
 			return errors.New("email is required")
