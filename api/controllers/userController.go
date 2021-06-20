@@ -46,12 +46,6 @@ func (a *App) UserSignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = user.BeforeSave()
-	if err != nil {
-		responses.ERROR(w, http.StatusBadRequest, err)
-		return
-	}
-
 	userCreated, err := user.SaveUser(a.DB)
 	if err != nil {
 		responses.ERROR(w, http.StatusBadRequest, err)
